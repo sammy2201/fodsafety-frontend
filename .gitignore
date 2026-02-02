@@ -8,6 +8,11 @@
 # testing
 /coverage
 
+# Environment variables
+.env
+.env.*  # If you use multiple .env files, like .env.production, .env.test, etc.
+
+
 # production
 /build
 
