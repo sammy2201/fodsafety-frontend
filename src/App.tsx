@@ -63,16 +63,16 @@ function App() {
     let filtered = allResults;
 
     if (filters.facility) {
-      filtered = filtered.filter((r) =>
-        r.ProductionLine?.Facility?.name
+      filtered = filtered.filter((i) =>
+        i.ProductionLine?.Facility?.name
           .toLowerCase()
           .includes(filters.facility.toLowerCase()),
       );
     }
 
     if (filters.productionLine) {
-      filtered = filtered.filter((r) =>
-        r.ProductionLine?.name
+      filtered = filtered.filter((i) =>
+        i.ProductionLine?.name
           .toLowerCase()
           .includes(filters.productionLine.toLowerCase()),
       );
@@ -80,12 +80,12 @@ function App() {
 
     if (filters.from) {
       const fromDate = new Date(filters.from);
-      filtered = filtered.filter((r) => new Date(r.testedAt) >= fromDate);
+      filtered = filtered.filter((i) => new Date(i.testedAt) >= fromDate);
     }
 
     if (filters.to) {
       const toDate = new Date(filters.to);
-      filtered = filtered.filter((r) => new Date(r.testedAt) <= toDate);
+      filtered = filtered.filter((i) => new Date(i.testedAt) <= toDate);
     }
 
     setResults(filtered);
