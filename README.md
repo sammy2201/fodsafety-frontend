@@ -40,11 +40,7 @@ Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
 
 ## Configuration
 
-If your backend API is running on a different port or host, update the API base URL in the frontend code (usually in `App.tsx`):
-
-```ts
-axios.get("http://localhost:3000/api/test-results");
-```
+If your backend API is running on a different port or host, update the API base URL in .env
 
 ## Screenshots
 
