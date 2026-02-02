@@ -7,8 +7,14 @@ type TestResult = {
   cfuCount: number;
   location: string;
   testedAt: string;
-  productionLine: string;
-  facility: string;
+  ProductionLine: {
+    id: string;
+    name: string;
+    Facility: {
+      id: string;
+      name: string;
+    };
+  };
 };
 
 function App() {
@@ -32,6 +38,7 @@ function App() {
   });
 
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
   // Fetch all results once
   const fetchResults = async () => {
     setLoading(true);
@@ -57,14 +64,16 @@ function App() {
 
     if (filters.facility) {
       filtered = filtered.filter((r) =>
-        r.facility?.toLowerCase().includes(filters.facility.toLowerCase()),
+        r.ProductionLine?.Facility?.name
+          .toLowerCase()
+          .includes(filters.facility.toLowerCase()),
       );
     }
 
     if (filters.productionLine) {
       filtered = filtered.filter((r) =>
-        r.productionLine
-          ?.toLowerCase()
+        r.ProductionLine?.name
+          .toLowerCase()
           .includes(filters.productionLine.toLowerCase()),
       );
     }
@@ -227,8 +236,8 @@ function App() {
             <tbody>
               {results.map((r) => (
                 <tr key={r.id}>
-                  <td>{r.facility}</td>
-                  <td>{r.productionLine}</td>
+                  <td>{r.ProductionLine?.Facility?.name}</td>
+                  <td>{r.ProductionLine?.name}</td>
                   <td>{r.cfuCount}</td>
                   <td>{r.location}</td>
                   <td>{new Date(r.testedAt).toLocaleString()}</td>
